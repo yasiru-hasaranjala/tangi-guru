@@ -8,7 +8,7 @@ import companyLogo from '../images/logo.png';
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("4-5");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const { signUp } = useUserAuth();

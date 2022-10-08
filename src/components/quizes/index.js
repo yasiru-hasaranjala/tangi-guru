@@ -1,7 +1,7 @@
 import {Age4ColorIdentificationQuestion} from './age-4-color-identification'
 
 export const getQuiz = (age,subject)=>{
-    if(age='4'){
+    if(age='4-5'){
         switch (subject) {
             case 'color-identification':
                 return Age4ColorIdentificationQuestion;

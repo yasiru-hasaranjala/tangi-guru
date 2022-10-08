@@ -19,6 +19,13 @@ const Home = () => {
       console.log(error.message);
     }
   };
+  const gotoQuiz = async () => {
+    try {
+      navigate("/quiz/4-5/color-identification")
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   // getUser(user.uid)
   return (
     <>
@@ -37,7 +44,7 @@ const Home = () => {
         <div>
           <Stack gap={3} className="list">
             <Stack direction="horizontal" gap={3} >
-              <ModuleCard title="Color Identification" value="10" />
+              <ModuleCard title="Color Identification" value="10" onClick={gotoQuiz}/>
               <ModuleCard title="Shapes & Sizes" value="3" />
               <ModuleCard title="Letters" value="6" />
             

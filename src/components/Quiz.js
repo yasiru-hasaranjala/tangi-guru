@@ -5,14 +5,24 @@ import { getQuiz } from './quizes'
 import { HappyFace,SadFace } from '../images'
 import {writeUserResults} from '../firebase'
 import { useUserAuth } from "../context/UserAuthContext";
+import { useNavigate } from "react-router";
 
 const Quiz = () => {
     const params = useParams();
+    const navigate = useNavigate();
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [displayModal, setDisplayModal] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
     const [results, setResults] = useState({});
     const { user } = useUserAuth();
+
+    const gotoHome = async () => {
+        try {
+          navigate("/home");
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
 
     const getQuestion = () => {
         const quiz = getQuiz(params.age, params.subject)
@@ -78,6 +88,7 @@ const Quiz = () => {
                     }
                     console.log('--datadata-data',data)
                     writeUserResults(user.uid,data)
+                    gotoHome()
                 }
                 setDisplayModal(false)
                 
