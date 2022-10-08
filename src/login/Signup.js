@@ -26,7 +26,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className="p-4 box">
+      <div className="p-4 box mx-auto" style={{width:"400px"}}>
         <h2 className="mb-3">Tangi-Guru Signup</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
