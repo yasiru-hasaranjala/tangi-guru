@@ -4,6 +4,7 @@ import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
+import companyLogo from '../images/logo.png';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,8 @@ const Login = () => {
 
   return (
     <>
-      <div className="p-4 box mx-auto " style={{width:"400px", alignItems:"center"}}>
+      <div className="p-4 box mx-auto text-center" style={{width:"400px", alignItems:"center"}}>
+        <img src={companyLogo} />
         <h2 className="mb-3">Tangi-Guru Login</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
@@ -64,7 +66,7 @@ const Login = () => {
         <hr />
         <div>
           <GoogleButton
-            className="g-btn"
+            className="g-btn mx-auto"
             type="dark"
             onClick={handleGoogleSignIn}
           />
