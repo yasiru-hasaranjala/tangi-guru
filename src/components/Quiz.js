@@ -7,13 +7,13 @@ import { HappyFace } from '../images'
 const Quiz = () => {
     const params = useParams();
     const { innerWidth: width } = window;
-    const [nextQuestion, setNextQuextion] = useState(0);
+    const [currentQuestion, setCurrentQuextion] = useState(0);
     const [displayModal, setDisplayModal] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
 
     const getQuestion = () => {
         const quiz = getQuiz(params.age, params.subject)
-        return quiz.questions[nextQuestion]
+        return quiz.questions[currentQuestion]
     }
 
     const displayAnswerModal = () => {
@@ -53,7 +53,12 @@ const Quiz = () => {
         setDisplayModal(true)
         setTimeout(
             function() {
+                const {questions} = getQuiz(params.age, params.subject)
+                if(questions.length>currentQuestion){
+                    setCurrentQuextion(currentQuestion+1)
+                }
                 setDisplayModal(false)
+                
             },
             3000
         );
