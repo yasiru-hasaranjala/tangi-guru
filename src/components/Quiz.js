@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Modal, Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { getQuiz } from './quizes'
-import { HappyFace } from '../images'
+import { HappyFace,SadFace } from '../images'
 
 const Quiz = () => {
     const params = useParams();
     const { innerWidth: width } = window;
-    const [currentQuestion, setCurrentQuextion] = useState(0);
+    const [currentQuestion, setCurrentQuextion] = useState(9);
     const [displayModal, setDisplayModal] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
 
@@ -27,7 +27,7 @@ const Quiz = () => {
             </Modal.Header>
             <Modal.Body>
                 <div style={{ width: "100%" }} align="center">
-                    <img src={HappyFace} width={200} ></img>
+                    <img src={isCorrect?HappyFace:SadFace} width={200} ></img>
                     <p className='mt-2'>
                         {isCorrect ? 'Your answer is right. Plase keep your good work and continue' :
                             'Your answer is wrong. But don\'t worry. Let\'s try in the next time'}
@@ -54,13 +54,15 @@ const Quiz = () => {
         setTimeout(
             function() {
                 const {questions} = getQuiz(params.age, params.subject)
+                console.log('-------->',{length:questions.length,currentQuestion})
                 if(questions.length>currentQuestion){
                     setCurrentQuextion(currentQuestion+1)
+                    console.log('-------->',{currentQuestion})
                 }
                 setDisplayModal(false)
                 
             },
-            3000
+            1000
         );
     }
 
