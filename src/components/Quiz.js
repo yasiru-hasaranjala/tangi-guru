@@ -3,13 +3,16 @@ import { Modal, Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { getQuiz } from './quizes'
 import { HappyFace,SadFace } from '../images'
+import {writeUserResults} from '../firebase'
+import { useUserAuth } from "../context/UserAuthContext";
 
 const Quiz = () => {
     const params = useParams();
-    const { innerWidth: width } = window;
-    const [currentQuestion, setCurrentQuextion] = useState(9);
+    const [currentQuestion, setCurrentQuestion] = useState(0);
     const [displayModal, setDisplayModal] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
+    const [results, setResults] = useState({});
+    const { user } = useUserAuth();
 
     const getQuestion = () => {
         const quiz = getQuiz(params.age, params.subject)
@@ -54,10 +57,27 @@ const Quiz = () => {
         setTimeout(
             function() {
                 const {questions} = getQuiz(params.age, params.subject)
-                console.log('-------->',{length:questions.length,currentQuestion})
-                if(questions.length>currentQuestion){
-                    setCurrentQuextion(currentQuestion+1)
-                    console.log('-------->',{currentQuestion})
+                console.log('------results---->',{len:questions.length,currentQuestion})
+                results[`question_${currentQuestion+1}`] =isAnswerCorrect?1:0
+                setResults(results)
+                if(questions.length>currentQuestion+1){
+                    setCurrentQuestion(currentQuestion+1)
+                }else{
+                    const values = Object.values(results)
+                    const totalMarks = values.reduce(
+                        (previousValue, currentValue) => previousValue + currentValue,
+                        0
+                      );
+                      
+                    const data = {
+                        [params.subject]:{
+                            marks:results,
+                            numberOfQuestions:questions.length,
+                            totalMarks
+                        }
+                    }
+                    console.log('--datadata-data',data)
+                    writeUserResults(user.uid,data)
                 }
                 setDisplayModal(false)
                 

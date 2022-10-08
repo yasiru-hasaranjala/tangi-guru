@@ -6,6 +6,7 @@ import DashboardComponent from "./DashboardComponent";
 import MiniCardComponent from "./MiniCardComponent";
 import ModuleCard from "./Card";
 import "./dashboard.css";
+import {getUser} from '../firebase'
 
 const Home = () => {
   const { logOut, user } = useUserAuth();
@@ -18,6 +19,7 @@ const Home = () => {
       console.log(error.message);
     }
   };
+  // getUser(user.uid)
   return (
     <>
       <nav className="navbar">

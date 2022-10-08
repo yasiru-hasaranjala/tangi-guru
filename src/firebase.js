@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref, onValue, set,update } from "firebase/database";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -17,6 +17,26 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-export const db = getDatabase(app);
+
+export const getUser = (userId) => {
+  const db = getDatabase();
+  const starCountRef = ref(db, 'users/' + userId);
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    return data
+  });
+}
+
+export const writeUserData = async (userId, data) => {
+  const db = getDatabase();
+  await set(ref(db, 'users/' + userId), data);
+}
+
+export const writeUserResults = async (userId, data) => {
+  const updates = {}
+  updates[`/users/${userId}/subjects`] = data;
+  const db = getDatabase();
+  await update(ref(db), updates)
+}
 
 export default app;
