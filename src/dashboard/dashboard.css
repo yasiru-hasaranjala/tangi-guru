@@ -1,3 +1,12 @@
+.navbar {
+  height: 100px;
+  padding: 10px;
+  background-color: rgb(51, 6, 51);
+}
+.divdash {
+  background-color: rgb(71, 10, 71);
+  height: calc(100vh - 100px);
+}
 .list {
     display: flex;
     flex-direction: row;
@@ -5,3 +14,19 @@
     align-content: center;
     flex-wrap: wrap;
   }
+.card {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 25px;
+  margin: 15px;
+  border-radius: 25px;
+}
+.cardbody {
+  position: "relative";
+  bottom: 0;
+  right: 0;
+}
+.cardtitle {
+  font-size: xx-large;
+  font-weight: 700;
+}

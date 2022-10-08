@@ -4,11 +4,12 @@ import Starfill from "../images/starfill";
 import { Column } from 'simple-flexbox';
 import { createUseStyles, useTheme } from 'react-jss';
 
-function ModuleCard({ className = '', title, value }) {
+function ModuleCard({ className = '', title, value, onClick }) {
+    
     return (
-        <Card className={className} style={{ width: '25rem', height:'20rem' }}>
-        <Card.Body>
-            <Card.Title className="pointerClass">{title}</Card.Title>
+        <Card className="card" bg="primary" text="white" onClick={onClick} style={{ cursor: "pointer", width: '28rem', height:'18rem' }}>
+        <Card.Body  className="cardbody">
+            <Card.Title className="cardtitle">{title}</Card.Title>
             {value>0 && <Starfill/>}{value<=0 && <Star/>}
             {value>1 && <Starfill/>}{value<=1 && <Star/>}
             {value>2 && <Starfill/>}{value<=2 && <Star/>}

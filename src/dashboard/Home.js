@@ -20,32 +20,33 @@ const Home = () => {
   };
   return (
     <>
-      <Stack direction="horizontal" gap={3} >
-        <div className="align-item-end p-4 mt-3 text-center">
-          Hello $$$$$ <br />
-          {user && user.email}
-        </div>
-        <div className="d-grid gap-2">
-          <Button variant="primary" onClick={handleLogout}>
-            Log out
-          </Button>
-        </div>
-      </Stack>
-      
-      <div>
-        <Stack gap={3} className="list">
-          <Stack direction="horizontal" gap={3} >
-            <ModuleCard title="Color Identification" value="10" />
-            <ModuleCard title="Shapes & Sizes" value="3" />
-            <ModuleCard title="Letters" value="6" />
-          
+      <nav className="navbar">
+          <div className="align-item-end text-center">
+            Hello $$$$$ <br />
+            {user && user.email}
+          </div>
+          <div className="d-grid gap-2">
+            <Button variant="primary" onClick={handleLogout}>
+              Log out
+            </Button>
+          </div>
+      </nav>
+      <div className="divdash">
+        <div>
+          <Stack gap={3} className="list">
+            <Stack direction="horizontal" gap={3} >
+              <ModuleCard title="Color Identification" value="10" />
+              <ModuleCard title="Shapes & Sizes" value="3" />
+              <ModuleCard title="Letters" value="6" />
+            
+            </Stack>
+            <Stack direction="horizontal" gap={3}>
+              <ModuleCard title="Numbers" value="8" />
+              <ModuleCard title="Making Words" value="0" />
+              <ModuleCard title="Mathematics" value=" 0" />
+            </Stack>
           </Stack>
-          <Stack direction="horizontal" gap={3}>
-            <ModuleCard title="Numbers" value="8" />
-            <ModuleCard title="Making Words" value="0" />
-            <ModuleCard title="Mathematics" value=" 0" />
-          </Stack>
-        </Stack>
+        </div>
       </div>
     </>
   );
