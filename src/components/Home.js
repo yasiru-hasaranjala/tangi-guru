@@ -1,8 +1,11 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { useUserAuth } from "../context/UserAuthContext";
-import AutoLayoutExample from "./CardGrid";
+import DashboardComponent from "./DashboardComponent";
+import MiniCardComponent from "./MiniCardComponent";
+import ModuleCard from "../dashboard/Card";
+import "../dashboard/dashboard.css";
 
 const Home = () => {
   const { logOut, user } = useUserAuth();
@@ -17,7 +20,7 @@ const Home = () => {
   };
   return (
     <>
-      <div className="p-4 box mt-3 text-center">
+      {/* <div className="p-4 box mt-3 text-center">
         Hello Welcome <br />
         {user && user.email}
       </div>
@@ -25,8 +28,29 @@ const Home = () => {
         <Button variant="primary" onClick={handleLogout}>
           Log out
         </Button>
+      </div> */}
+      
+      <div>
+        {/* <CardGroup>
+          <ModuleCard />
+          <ModuleCard />
+          <ModuleCard />
+        </CardGroup> */}
+        {/* <DashboardComponent/>  */}
+        <Stack gap={3} >
+          <Stack direction="horizontal" gap={3} >
+            <ModuleCard />
+            <ModuleCard />
+            <ModuleCard />
+            <ModuleCard />
+          </Stack>
+          <Stack direction="horizontal" gap={3}>
+            <ModuleCard />
+            <ModuleCard />
+            <ModuleCard />
+          </Stack>
+        </Stack>
       </div>
-      <AutoLayoutExample/>
     </>
   );
 };
