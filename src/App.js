@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 
 function App() {
+
   return (
           <div style={{width:"100%"}}>
             <UserAuthContextProvider>

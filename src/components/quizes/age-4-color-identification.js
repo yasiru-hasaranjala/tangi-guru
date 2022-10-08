@@ -153,29 +153,6 @@ export const Age4ColorIdentificationQuestion = {
                 {key:'3',answer:<div className='ellipse' style={{background:'green',color:'black',fontWeight:"bolder"}}>Green</div>}
             ],
             correctAnswer:'1'
-        },
-        {
-            key:'question 11',
-            question:<div style={{width:"100%"}} align="center">
-                <Container>
-                    <Row>
-                        <div className='rectangle-small' style={{background:'red',color:'black',fontWeight:"bolder"}}></div>
-                        <div className='rectangle-small' style={{background:'green',color:'black',fontWeight:"bolder"}}></div>
-                        <div className='rectangle-small' style={{background:'yellow',color:'black',fontWeight:"bolder"}}></div>
-                        <div className='rectangle-small' style={{background:'red',color:'black',fontWeight:"bolder"}}></div>
-                        <div className='rectangle-small' style={{background:'green',color:'black',fontWeight:"bolder"}}></div>
-                        <div className='rectangle-small' style={{background:'yellow',color:'black',fontWeight:"bolder"}}></div>
-                        <div className='rectangle-small-border' style={{color:'black',fontWeight:"bolder"}}>?</div>
-                    </Row>
-                </Container>
-                <p className='question-text'>What color does blue and red make?</p>
-            </div>,
-            answers:[
-                {key:'1',answer:<div className='ellipse' style={{background:'red',color:'black',fontWeight:"bolder"}}>Red</div>},
-                {key:'2',answer:<div className='ellipse' style={{background:'blue',color:'black',fontWeight:"bolder"}}>Blue</div>},
-                {key:'3',answer:<div className='ellipse' style={{background:'green',color:'black',fontWeight:"bolder"}}>Green</div>}
-            ],
-            correctAnswer:'1'
         }
     ]
 }
