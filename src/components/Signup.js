@@ -6,6 +6,8 @@ import { useUserAuth } from "../context/UserAuthContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const { signUp } = useUserAuth();
@@ -15,7 +17,7 @@ const Signup = () => {
     e.preventDefault();
     setError("");
     try {
-      await signUp(email, password);
+      await signUp(email, password, name);
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -25,7 +27,7 @@ const Signup = () => {
   return (
     <>
       <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Signup</h2>
+        <h2 className="mb-3">Tangi-Guru Signup</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -34,6 +36,26 @@ const Signup = () => {
               placeholder="Email address"
               onChange={(e) => setEmail(e.target.value)}
             />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Control
+              type="name"
+              placeholder="Child Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicAge">
+            <Form.Control
+              as="select"
+              value={type}
+              onChange={e => setType(e.target.value)}
+            >
+              <option value="4-5">Age Group 4-5</option>
+              <option value="5-6">Age Group 5-6</option>
+              <option value="6-7">Age Group 6-7</option>
+            </Form.Control>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">

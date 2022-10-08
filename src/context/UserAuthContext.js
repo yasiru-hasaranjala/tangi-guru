@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 
 const userAuthContext = createContext();
 
@@ -17,8 +17,12 @@ export function UserAuthContextProvider({ children }) {
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
-  function signUp(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+  function signUp(email, password, username) {
+    return createUserWithEmailAndPassword(auth, email, password)
+    .then(  function(user){
+      //dispatch({type: USER_SIGNUP_SUCCESS});
+      //db.ref(`users/${user.uid}`).set({name: username});
+    });
   }
   function logOut() {
     return signOut(auth);
