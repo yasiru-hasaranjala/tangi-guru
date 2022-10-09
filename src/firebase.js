@@ -30,6 +30,7 @@ export const getUser = (userId) => {
   
 }
 
+
 export const writeUserData = async (userId, data) => {
   const db = getDatabase();
   await set(ref(db, 'users/' + userId), data);

@@ -6,7 +6,7 @@ const Frog = 'https://www.freeiconspng.com/thumbs/frog-png/frog-png-image-free-d
 const Car = 'https://pics.clipartpng.com/Blue_Car_PNG_Clip_Art-1166.png'
 const Apple = 'https://purepng.com/public/uploads/large/purepng.com-fresh-applefoodsweettastyhealthyfruitappleleaf-981524677946vfurf.png'
 const Star = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/2176px-Five-pointed_star.svg.png'
-const Hart = 'https://i.dlpng.com/static/png/6335534_preview.png'
+const Hart = 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Ei-heart.svg'
 
 export {
     Leaf,

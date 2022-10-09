@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../context/UserAuthContext";
+import companyLogo from '../images/logo.png';
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("4-5");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const { signUp } = useUserAuth();
@@ -26,7 +27,8 @@ const Signup = () => {
 
   return (
     <>
-      <div className="p-4 box mx-auto" style={{width:"400px"}}>
+      <div className="p-4 box mx-auto text-center" style={{width:"400px"}}>
+        <img src={companyLogo} />
         <h2 className="mb-3">Tangi-Guru Signup</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>

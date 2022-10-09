@@ -7,7 +7,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 function ModuleCard({ className = '', title, value, onClick }) {
     
     return (
-        <Card className="card" bg="primary" text="white" onClick={onClick} style={{ cursor: "pointer", width: '28rem', height:'18rem' }}>
+        <Card className="card" bg="primary" text="white" onClick={onClick} style={{ cursor: "pointer",  }}>
         <Card.Body  className="cardbody">
             <Card.Title className="cardtitle">{title}</Card.Title>
             {value>0 && <Starfill/>}{value<=0 && <Star/>}
