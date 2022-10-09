@@ -19,12 +19,15 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 export const getUser = (userId) => {
-  const db = getDatabase();
+  return new Promise(function(resolve, reject){
+    const db = getDatabase();
   const starCountRef = ref(db, 'users/' + userId);
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
-    return data
+    resolve(data) 
   });
+});
+  
 }
 
 export const writeUserData = async (userId, data) => {

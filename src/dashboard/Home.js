@@ -1,4 +1,4 @@
-import React from "react";
+import {useEffect,useState} from "react";
 import { Button, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { useUserAuth } from "../context/UserAuthContext";
@@ -10,6 +10,7 @@ import {getUser} from '../firebase'
 
 const Home = () => {
   const { logOut, user } = useUserAuth();
+  const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
@@ -19,7 +20,13 @@ const Home = () => {
       console.log(error.message);
     }
   };
-  // getUser(user.uid)
+
+  useEffect(() => {
+    getUser(user.uid).then(data=>{
+      setUserData(data)
+    })
+  }, [user]);
+  
   return (
     <>
       <nav className="navbar">
@@ -38,7 +45,7 @@ const Home = () => {
           <Stack gap={3} className="list">
             <Stack direction="horizontal" gap={3} >
               <ModuleCard title="Color Identification" value="10" />
-              <ModuleCard title="Shapes & Sizes" value="3" />
+              <ModuleCard title="Shapes & Sizes" value={userData?.subjects['color-identification'].totalMarks} />
               <ModuleCard title="Letters" value="6" />
             
             </Stack>
