@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from 'react';
 import { Button, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { useUserAuth } from "../context/UserAuthContext";
@@ -6,10 +7,12 @@ import DashboardComponent from "./DashboardComponent";
 import MiniCardComponent from "./MiniCardComponent";
 import ModuleCard from "./Card";
 import "./dashboard.css";
-import {getUser} from '../firebase'
+import {getUser, getUserName} from '../firebase';
+import {Container , Row, Col} from 'react-bootstrap';
 
 const Home = () => {
   const { logOut, user } = useUserAuth();
+  const [username, setUserName] = useState();
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
@@ -26,12 +29,13 @@ const Home = () => {
       console.log(error.message);
     }
   };
-  // getUser(user.uid)
+  //setUserName(getUserName(user.uid));
+   
   return (
     <>
       <nav className="navbar">
           <div className="align-item-end text-center">
-            Hello $$$$$ <br />
+            Hello {username} <br />
             {user && user.email}
           </div>
           <div className="d-grid gap-2">
@@ -42,7 +46,28 @@ const Home = () => {
       </nav>
       <div className="divdash">
         <div>
-          <Stack gap={3} className="list">
+        <Container className="Container">  
+          <Row>  
+            <Col className="p-2">
+              <ModuleCard title="Color Identification" value="10" onClick={gotoQuiz}/>
+            </Col>  
+            <Col className="p-2">
+              <ModuleCard title="Shapes & Sizes" value="3" />
+            </Col>  
+          </Row>  
+          <Row>  
+            <Col className="p-2">
+              <ModuleCard title="Letters" value="6" />
+            </Col>  
+            <Col className="p-2">
+              <ModuleCard title="Numbers" value="8" />
+            </Col>  
+            <Col className="p-2">
+              <ModuleCard title="Making Words" value="0" />
+            </Col>  
+          </Row>  
+        </Container>  
+          {/* <Stack gap={3} className="list">
             <Stack direction="horizontal" gap={3} >
               <ModuleCard title="Color Identification" value="10" onClick={gotoQuiz}/>
               <ModuleCard title="Shapes & Sizes" value="3" />
@@ -54,7 +79,7 @@ const Home = () => {
               <ModuleCard title="Making Words" value="0" />
               <ModuleCard title="Mathematics" value=" 0" />
             </Stack>
-          </Stack>
+          </Stack> */}
         </div>
       </div>
     </>
