@@ -22,17 +22,9 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route
-                path="/quiz/:age/:subject"
-                element={
-                  <ProtectedRoute>
-                    <Quiz />
-                  </ProtectedRoute>
-                }
-              />
+              <Route path="/quiz/:age/:subject" element={<Quiz />}/>
               <Route path="/" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/home" element={<Home />} />
             </Routes>
           </UserAuthContextProvider>
           </div>

@@ -7,12 +7,12 @@ import DashboardComponent from "./DashboardComponent";
 import MiniCardComponent from "./MiniCardComponent";
 import ModuleCard from "./Card";
 import "./dashboard.css";
-import {getUser, getUserName} from '../firebase';
+import { getUser } from '../firebase';
 import {Container , Row, Col} from 'react-bootstrap';
 
 const Home = () => {
   const { logOut, user } = useUserAuth();
-  const [username, setUserName] = useState();
+  const [userdata, setUserData] = useState();
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
@@ -29,13 +29,15 @@ const Home = () => {
       console.log(error.message);
     }
   };
-  //setUserName(getUserName(user.uid));
+  
+  //const userData = getUser(user.userId);
+  //console.log(userData);
    
   return (
     <>
       <nav className="navbar">
           <div className="align-item-end text-center">
-            Hello {username} <br />
+            Hello {user.childName} <br />
             {user && user.email}
           </div>
           <div className="d-grid gap-2">

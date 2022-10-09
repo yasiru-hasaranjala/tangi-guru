@@ -27,15 +27,6 @@ export const getUser = (userId) => {
   });
 }
 
-export const getUserName = (userId) => {
-  const db = getDatabase();
-  const nameRef = ref(db, 'users/' + userId + '/childName');
-  onValue(nameRef, (snapshot) => {
-    console.log(snapshot.val());
-    const data = snapshot.val();
-    return data
-  });
-}
 
 export const writeUserData = async (userId, data) => {
   const db = getDatabase();
